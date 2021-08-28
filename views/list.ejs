@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>TheToDoList</title>
+</head>
+
+<body>
+    <div class="box" id="heading">
+        <h1>
+            <%= titleheading %>
+        </h1>
+    </div>
+    <div class="box">
+        <% for(let i=0;i<listItems.length; i++){ %>
+            <form action="/delete" method="POST">
+                <div class="item">
+                    <input type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%= listItems[i]._id %>">
+                    <p>
+                        <%= listItems[i].name %>
+                    </p>
+                </div>
+                <input type="hidden" name="listName" value="<%= titleheading %>">
+            </form>
+            <% } %>
+                <form class="item" action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" required>
+                    <button type="submit" name="list" value=<%=titleheading %>>+</button>
+                </form>
+    </div>
+</body>
+<footer>
+    <h4>Made with ❤ by Abhishek</h4>
+</footer>
+
+</html>
